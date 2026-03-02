@@ -1,0 +1,245 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+
+export default function App() {
+  const [dark, setDark] = useState(false);
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0 }
+  };
+
+  const skills = [
+    "Python",
+    "Machine Learning",
+    "Pandas",
+    "NumPy",
+    "Scikit-Learn",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Core PHP",
+    "MySQL",
+    "React",
+    "Git & GitHub"
+  ];
+
+  return (
+    <div className={dark ? "dark" : ""}>
+      <div className="bg-white dark:bg-slate-900 text-slate-800 dark:text-white transition duration-500 font-sans">
+
+        {/* NAVBAR */}
+        <nav className="flex justify-between items-center px-8 py-5 sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-50 shadow-sm">
+          <h1 className="font-bold text-lg">Rutvi Rathod</h1>
+          <button
+            onClick={() => setDark(!dark)}
+            className="px-4 py-2 text-sm bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+          >
+            Toggle Mode
+          </button>
+        </nav>
+
+        {/* HERO */}
+        <section className="min-h-screen flex flex-col justify-center items-center text-center px-6">
+          <motion.h1
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ duration: 0.8 }}
+            className="text-5xl font-bold mb-6"
+          >
+            Rutvi Rathod
+          </motion.h1>
+
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="max-w-3xl text-lg text-slate-600 dark:text-slate-300"
+          >
+            Computer Engineering Graduate building scalable web applications 
+            and intelligent data-driven systems. Incoming Master’s in Data Science (2025–2027).
+          </motion.p>
+
+          <div className="mt-8">
+            <a
+              href="/resume.pdf"
+              download
+              className="px-6 py-3 bg-indigo-600 text-white rounded-xl shadow hover:scale-105 transition"
+            >
+              Download Resume
+            </a>
+          </div>
+        </section>
+
+        {/* ABOUT */}
+        <motion.section
+          className="py-20 px-10 text-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl font-bold mb-6">About Me</h2>
+          <div className="max-w-3xl mx-auto text-lg text-slate-600 dark:text-slate-300">
+            I combine backend engineering with machine learning to build 
+            practical, scalable systems. From web development internships 
+            to predictive ML models, I focus on solving real-world problems 
+            using clean architecture and data intelligence.
+          </div>
+        </motion.section>
+
+        {/* PROJECTS */}
+        <motion.section
+          className="py-20 px-10 bg-slate-50 dark:bg-slate-800"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl font-bold mb-10 text-center">Projects</h2>
+
+          <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+
+            {/* CUSTOMER CHURN */}
+            <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg hover:scale-105 transition">
+              <h3 className="text-xl font-semibold mb-2">📉 Customer Churn Prediction</h3>
+
+              <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm mb-4">
+                Accuracy: 85%
+              </span>
+
+              <p className="mb-4">
+                Built classification models to predict customer churn using feature engineering,
+                preprocessing, and model evaluation techniques.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {["Python", "Pandas", "Scikit-Learn", "Logistic Regression"].map(tag => (
+                  <span key={tag} className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href="https://github.com/1234rutvi"
+                target="_blank"
+                className="px-4 py-2 bg-indigo-600 text-white rounded-lg"
+              >
+                View on GitHub
+              </a>
+            </div>
+
+            {/* MOVIE RECOMMENDER */}
+            <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg hover:scale-105 transition">
+              <h3 className="text-xl font-semibold mb-2">🎬 Movie Recommendation System</h3>
+
+              <span className="inline-block bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm mb-4">
+                Similarity Score Optimized
+              </span>
+
+              <p className="mb-4">
+                Developed a content-based recommendation engine using cosine similarity
+                to generate personalized movie suggestions.
+              </p>
+
+              <div className="flex flex-wrap gap-2 mb-6">
+                {["Python", "Pandas", "NLP", "Cosine Similarity"].map(tag => (
+                  <span key={tag} className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <a
+                href="https://github.com/1234rutvi"
+                target="_blank"
+                className="px-4 py-2 bg-indigo-600 text-white rounded-lg"
+              >
+                View on GitHub
+              </a>
+            </div>
+
+            {/* DISASTER MANAGEMENT */}
+            <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg">
+              <h3 className="text-xl font-semibold mb-4">🌍 Disaster Management Application</h3>
+              <p>
+                National-level hackathon project focused on real-time emergency
+                coordination, response optimization, and resource tracking.
+              </p>
+            </div>
+
+            {/* STUDENT MANAGEMENT */}
+            <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg">
+              <h3 className="text-xl font-semibold mb-4">📋 Student Attendance Management</h3>
+              <p>
+                District-level hackathon project to digitize attendance tracking
+                and streamline institutional record systems.
+              </p>
+            </div>
+
+            {/* ROBOT */}
+            <div className="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg">
+              <h3 className="text-xl font-semibold mb-4">🤖 Self-Balancing Robot</h3>
+              <p>
+                Hardware-software integration project implementing dynamic
+                balance control using real-time sensor feedback.
+              </p>
+            </div>
+
+          </div>
+        </motion.section>
+
+        {/* SKILLS */}
+        <motion.section
+          className="py-20 px-10 text-center"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl font-bold mb-10">Skills</h2>
+
+          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+            {skills.map(skill => (
+              <motion.span
+                key={skill}
+                whileHover={{ scale: 1.1 }}
+                className="px-5 py-2 bg-indigo-600 text-white rounded-full shadow-md cursor-default"
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* FOOTER */}
+        <footer className="py-10 text-center text-slate-500 dark:text-slate-400 space-y-2">
+          <div>
+            <a href="mailto:rutvir2211@gmail.com" className="hover:text-indigo-600">
+              rutvir2211@gmail.com
+            </a>
+          </div>
+          <div>
+            <a href="https://github.com/1234rutvi" target="_blank" className="hover:text-indigo-600">
+              github.com/1234rutvi
+            </a>
+          </div>
+          <div>
+            <a href="https://kaggle.com/rutvi2211" target="_blank" className="hover:text-indigo-600">
+              kaggle.com/rutvi2211
+            </a>
+          </div>
+          <div>
+            <a href="https://linkedin.com/" target="_blank" className="hover:text-indigo-600">
+              linkedin.com/in/yourprofile
+            </a>
+          </div>
+        </footer>
+
+      </div>
+    </div>
+  );
+}
